@@ -48,9 +48,9 @@ const Home = () => {
         onChangeText={val => setQuery(val)}
       />
 
-      <Text text={placeholder.fromPlaceholder} size={20} color="blue" />
+      <Text text={placeholder.fromPlaceholder} size="20px" color="#45b6fe" />
 
-      {!!translated && <Text text={translated} />}
+      {!!translated && <Text text={translated} size="16px" />}
 
       <Button text="Çevir" bgColor="#45b6fe" onClick={translate} />
 

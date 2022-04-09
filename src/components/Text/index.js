@@ -12,7 +12,7 @@ const CustomText = ({text, size, color}) => {
 
 CustomText.propTypes = {
   text: PropTypes.string,
-  size: PropTypes.number,
+  size: PropTypes.string,
   color: PropTypes.string,
 };
 
