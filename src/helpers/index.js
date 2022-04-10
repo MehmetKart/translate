@@ -25,4 +25,12 @@ const getData = async () => {
   }
 };
 
-export {storeData, getData};
+const removeData = async () => {
+  try {
+    await AsyncStorage.removeItem('history');
+  } catch (err) {
+    console.log('error', err);
+  }
+};
+
+export {storeData, getData, removeData};

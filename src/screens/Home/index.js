@@ -6,7 +6,7 @@ import NavigateButton from '../../components/NavigateButton';
 import {Container} from './styles';
 import {translateTo} from '../../services';
 import Voice from '@react-native-voice/voice';
-import {storeData} from '../../helpers';
+import {storeData, removeData} from '../../helpers';
 import {useNavigation} from '@react-navigation/native';
 
 const Home = () => {
@@ -93,6 +93,10 @@ const Home = () => {
     await storeData(history);
   };
 
+  const removeHistory = async () => {
+    await removeData();
+  };
+
   return (
     <Container>
       <Input
@@ -119,6 +123,8 @@ const Home = () => {
         text="Geçmiş Aramaları Göster"
         onClick={() => navigation.navigate('History')}
       />
+
+      <NavigateButton text="Geçmişi Temizle" onClick={removeHistory} />
     </Container>
   );
 };
