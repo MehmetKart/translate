@@ -2,10 +2,12 @@ import React, {useEffect, useState} from 'react';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Text from '../../components/Text';
+import NavigateButton from '../../components/NavigateButton';
 import {Container} from './styles';
 import {translateTo} from '../../services';
 import Voice from '@react-native-voice/voice';
 import {storeData} from '../../helpers';
+import {useNavigation} from '@react-navigation/native';
 
 const Home = () => {
   const [query, setQuery] = useState('');
@@ -13,6 +15,7 @@ const Home = () => {
   const [from, setFrom] = useState('tr');
   const [translated, setTranslated] = useState('');
   const [recordStatus, setRecordStatus] = useState('Başlat');
+  const navigation = useNavigation();
 
   const onSpeechStartHandler = () => {};
   const onSpeechEndHandler = () => {};
@@ -111,6 +114,11 @@ const Home = () => {
       />
 
       <Button text="Dili Değiştir" onClick={replaceTranslate} />
+
+      <NavigateButton
+        text="Geçmiş Aramaları Göster"
+        onClick={() => navigation.navigate('History')}
+      />
     </Container>
   );
 };
