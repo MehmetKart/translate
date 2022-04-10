@@ -25,4 +25,4 @@ const getData = async () => {
   }
 };
 
-export {storeData, getData, removeData};
+export {storeData, getData};
