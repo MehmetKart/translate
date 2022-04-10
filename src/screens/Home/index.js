@@ -2,9 +2,10 @@ import React, {useEffect, useState} from 'react';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Text from '../../components/Text';
-import {Container, RoundedButton} from './styles';
+import {Container} from './styles';
 import {translateTo} from '../../services';
 import Voice from '@react-native-voice/voice';
+import {storeData} from '../../helpers';
 
 const Home = () => {
   const [query, setQuery] = useState('');
@@ -30,6 +31,10 @@ const Home = () => {
       fromPlaceholder: from === 'en' ? 'İngilizce' : 'Türkçe',
     });
   }, [to, from]);
+
+  useEffect(() => {
+    setHistory();
+  }, [translated]);
 
   useEffect(() => {
     Voice.onSpeechStart = onSpeechStartHandler;
@@ -74,6 +79,15 @@ const Home = () => {
     setTranslated('');
     setTo(to === 'en' ? 'tr' : 'en');
     setFrom(from === 'en' ? 'tr' : 'en');
+  };
+
+  const setHistory = async () => {
+    const history = {
+      id: Date.now(),
+      query,
+      translated,
+    };
+    await storeData(history);
   };
 
   return (
